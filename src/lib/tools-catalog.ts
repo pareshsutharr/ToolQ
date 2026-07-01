@@ -9,6 +9,7 @@ export interface ToolMeta {
   description: string;
   premium: "free" | "partial" | "premium";
   seoKeyword: string;
+  keywords: string[];
 }
 
 export const categories: { id: ToolCategory; label: string; description: string }[] = [
@@ -34,6 +35,7 @@ export const tools: ToolMeta[] = [
     description: "Combine multiple PDFs into one ordered document.",
     premium: "partial",
     seoKeyword: "merge pdf online free",
+    keywords: ["combine pdfs", "join pdfs", "put pdfs together", "stitch pdfs", "concatenate"],
   },
   {
     slug: "split",
@@ -43,6 +45,7 @@ export const tools: ToolMeta[] = [
     description: "Extract page ranges into separate PDF files.",
     premium: "partial",
     seoKeyword: "split pdf online",
+    keywords: ["break apart pdf", "separate pages", "divide pdf", "cut pdf into pieces"],
   },
   {
     slug: "remove-pages",
@@ -52,6 +55,7 @@ export const tools: ToolMeta[] = [
     description: "Delete specific pages from a PDF.",
     premium: "free",
     seoKeyword: "remove pages from pdf",
+    keywords: ["delete pages", "get rid of a page", "erase pages"],
   },
   {
     slug: "extract-pages",
@@ -61,6 +65,7 @@ export const tools: ToolMeta[] = [
     description: "Pull specific pages out into a new PDF.",
     premium: "free",
     seoKeyword: "extract pages from pdf",
+    keywords: ["pull out pages", "save some pages", "grab a few pages", "copy pages out"],
   },
   {
     slug: "organize",
@@ -70,6 +75,7 @@ export const tools: ToolMeta[] = [
     description: "Reorder, rotate, or delete pages in one view.",
     premium: "free",
     seoKeyword: "organize pdf pages",
+    keywords: ["rearrange pages", "reorder pages", "move pages around", "sort pages"],
   },
   {
     slug: "compress",
@@ -79,6 +85,7 @@ export const tools: ToolMeta[] = [
     description: "Shrink PDF file size while preserving quality.",
     premium: "partial",
     seoKeyword: "compress pdf online",
+    keywords: ["shrink pdf", "reduce pdf size", "make pdf smaller", "lower file size", "too big to email"],
   },
   {
     slug: "repair",
@@ -88,6 +95,7 @@ export const tools: ToolMeta[] = [
     description: "Attempt to fix a corrupted or malformed PDF.",
     premium: "free",
     seoKeyword: "repair corrupted pdf",
+    keywords: ["fix broken pdf", "pdf won't open", "corrupted file", "damaged pdf"],
   },
   {
     slug: "ocr",
@@ -97,6 +105,7 @@ export const tools: ToolMeta[] = [
     description: "Make a scanned PDF searchable and selectable.",
     premium: "partial",
     seoKeyword: "ocr pdf online",
+    keywords: ["scanned pdf to text", "make scan searchable", "text recognition", "read scanned document"],
   },
   {
     slug: "to-jpg",
@@ -106,6 +115,7 @@ export const tools: ToolMeta[] = [
     description: "Export every page as a high-quality JPG image.",
     premium: "free",
     seoKeyword: "pdf to jpg",
+    keywords: ["pdf to image", "save pdf as picture", "pdf pages as photos", "pdf to png"],
   },
   {
     slug: "to-text",
@@ -115,6 +125,7 @@ export const tools: ToolMeta[] = [
     description: "Extract raw text content from any PDF.",
     premium: "free",
     seoKeyword: "pdf to text",
+    keywords: ["get text out of pdf", "copy text from pdf", "pdf to txt", "read pdf content"],
   },
   {
     slug: "excel-to-pdf",
@@ -124,6 +135,7 @@ export const tools: ToolMeta[] = [
     description: "Render a spreadsheet as a paginated PDF table.",
     premium: "free",
     seoKeyword: "excel to pdf converter",
+    keywords: ["spreadsheet to pdf", "xlsx to pdf", "csv to pdf"],
   },
   {
     slug: "to-excel",
@@ -133,6 +145,7 @@ export const tools: ToolMeta[] = [
     description: "Extract text and tables into a spreadsheet.",
     premium: "partial",
     seoKeyword: "pdf to excel converter",
+    keywords: ["pdf table to spreadsheet", "pdf to xlsx", "pdf to csv", "get data out of pdf"],
   },
   {
     slug: "rotate",
@@ -142,6 +155,7 @@ export const tools: ToolMeta[] = [
     description: "Fix sideways or upside-down pages.",
     premium: "free",
     seoKeyword: "rotate pdf",
+    keywords: ["turn pdf pages", "fix upside down page", "sideways pdf", "flip page orientation"],
   },
   {
     slug: "page-numbers",
@@ -151,6 +165,7 @@ export const tools: ToolMeta[] = [
     description: "Number every page, positioned however you like.",
     premium: "free",
     seoKeyword: "add page numbers to pdf",
+    keywords: ["number the pages", "page numbering", "insert page count"],
   },
   {
     slug: "watermark",
@@ -160,6 +175,7 @@ export const tools: ToolMeta[] = [
     description: "Overlay diagonal text across every page.",
     premium: "free",
     seoKeyword: "add watermark to pdf",
+    keywords: ["stamp pdf", "add logo overlay", "confidential stamp", "brand my pdf"],
   },
   {
     slug: "crop",
@@ -169,6 +185,7 @@ export const tools: ToolMeta[] = [
     description: "Trim page margins, previewed before you commit.",
     premium: "free",
     seoKeyword: "crop pdf pages",
+    keywords: ["trim margins", "cut page edges", "resize page area"],
   },
   {
     slug: "fill-form",
@@ -178,6 +195,7 @@ export const tools: ToolMeta[] = [
     description: "Fill in an interactive PDF form's fields.",
     premium: "free",
     seoKeyword: "fill pdf form online",
+    keywords: ["fill out a form", "complete pdf fields", "type into pdf form"],
   },
   {
     slug: "sign",
@@ -187,6 +205,7 @@ export const tools: ToolMeta[] = [
     description: "Draw a signature and place it on the page.",
     premium: "free",
     seoKeyword: "sign pdf online",
+    keywords: ["add signature", "e-sign document", "sign a contract", "put my signature on"],
   },
   {
     slug: "compare",
@@ -196,6 +215,7 @@ export const tools: ToolMeta[] = [
     description: "See what changed between two versions of a document.",
     premium: "partial",
     seoKeyword: "compare pdf documents",
+    keywords: ["find differences", "diff two pdfs", "what changed", "compare two versions"],
   },
   {
     slug: "unlock",
@@ -205,6 +225,7 @@ export const tools: ToolMeta[] = [
     description: "Remove password protection from a PDF.",
     premium: "free",
     seoKeyword: "unlock pdf remove password",
+    keywords: ["remove password", "open locked pdf", "decrypt pdf", "forgot pdf password"],
   },
   {
     slug: "summarize",
@@ -214,6 +235,7 @@ export const tools: ToolMeta[] = [
     description: "Condense a PDF into key points — runs entirely in your browser.",
     premium: "premium",
     seoKeyword: "ai pdf summarizer",
+    keywords: ["summarize document", "tldr", "key points", "shorten this pdf", "main ideas"],
   },
   {
     slug: "translate",
@@ -223,6 +245,7 @@ export const tools: ToolMeta[] = [
     description: "Translate a PDF's text — runs entirely in your browser.",
     premium: "premium",
     seoKeyword: "translate pdf online",
+    keywords: ["convert language", "translate to spanish", "translate to french", "translate to german"],
   },
   {
     slug: "remove-background",
@@ -232,6 +255,7 @@ export const tools: ToolMeta[] = [
     description: "Instantly isolate a subject with AI — runs entirely in your browser.",
     premium: "partial",
     seoKeyword: "remove background from image",
+    keywords: ["cutout image", "transparent background", "isolate subject", "erase background", "background eraser"],
   },
   {
     slug: "compress",
@@ -241,6 +265,7 @@ export const tools: ToolMeta[] = [
     description: "Reduce image file size with minimal quality loss.",
     premium: "partial",
     seoKeyword: "compress image online",
+    keywords: ["shrink photo", "reduce image size", "make image smaller", "lower photo file size"],
   },
   {
     slug: "resize",
@@ -250,6 +275,7 @@ export const tools: ToolMeta[] = [
     description: "Change image dimensions precisely or by percentage.",
     premium: "free",
     seoKeyword: "resize image online",
+    keywords: ["change photo size", "scale image", "make picture bigger", "make picture smaller"],
   },
   {
     slug: "convert",
@@ -259,6 +285,7 @@ export const tools: ToolMeta[] = [
     description: "Convert between JPG, PNG and WebP.",
     premium: "free",
     seoKeyword: "image format converter",
+    keywords: ["jpg to png", "png to jpg", "convert to webp", "change image type"],
   },
   {
     slug: "to-pdf",
@@ -268,6 +295,7 @@ export const tools: ToolMeta[] = [
     description: "Combine one or more images into a single PDF.",
     premium: "free",
     seoKeyword: "image to pdf converter",
+    keywords: ["photos to pdf", "jpg to pdf", "scan pictures into pdf", "make a pdf from photos"],
   },
 ];
 

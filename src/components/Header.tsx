@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/is-configured";
 import ToolqMark from "@/components/ToolqMark";
 import MegaMenu from "@/components/MegaMenu";
+import SearchBar from "@/components/SearchBar";
 
 export default function Header() {
   const [email, setEmail] = useState<string | null>(null);
@@ -28,8 +29,8 @@ export default function Header() {
 
   return (
     <header className="border-b border-ink/10 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-4">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <ToolqMark className="h-8 w-8 rounded-lg" />
           <span className="font-display text-lg font-semibold text-deep-ink">
             Tool<span className="text-node-blue">Q</span>
@@ -37,6 +38,10 @@ export default function Header() {
         </Link>
 
         <MegaMenu />
+
+        <div className="flex-1" />
+
+        <SearchBar />
 
         <div className="flex items-center gap-3">
           {!isSupabaseConfigured() ? null : email ? (
