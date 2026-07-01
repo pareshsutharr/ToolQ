@@ -1,0 +1,9 @@
+export default function ToolqMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 96 96" className={className} aria-hidden="true">
+      <rect width="96" height="96" rx="22" fill="#4F46E5" />
+      <circle cx="48" cy="48" r="26" fill="none" stroke="#FFFFFF" strokeWidth="9" />
+      <line x1="66.4" y1="66.4" x2="79.1" y2="79.1" stroke="#22D3EE" strokeWidth="9" strokeLinecap="round" />
+    </svg>
+  );
+}

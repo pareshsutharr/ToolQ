@@ -1,0 +1,34 @@
+import Link from "next/link";
+import { categories, toolsByCategory } from "@/lib/tools-catalog";
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-ink/10 bg-white">
+      <div className="mx-auto max-w-6xl px-6 py-10">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          {categories.map((c) => (
+            <div key={c.id}>
+              <h3 className="mb-3 text-sm font-semibold text-deep-ink">{c.label}</h3>
+              <ul className="space-y-2">
+                {toolsByCategory(c.id).map((t) => (
+                  <li key={t.slug}>
+                    <Link
+                      href={`/tools/${c.id}/${t.slug}`}
+                      className="text-sm text-ink/60 hover:text-node-blue"
+                    >
+                      {t.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="mt-10 text-xs text-ink/40">
+          Files are processed in your browser and never uploaded unless a tool says otherwise. ©{" "}
+          {new Date().getFullYear()} toolq.online.
+        </p>
+      </div>
+    </footer>
+  );
+}
