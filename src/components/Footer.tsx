@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-ink/10 bg-white">
       <div className="mx-auto max-w-6xl px-6 py-10">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {categories.map((c) => (
             <div key={c.id}>
               <h3 className="mb-3 text-sm font-semibold text-deep-ink">{c.label}</h3>

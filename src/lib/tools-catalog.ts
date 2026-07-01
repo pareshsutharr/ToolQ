@@ -1,5 +1,14 @@
-export type ToolCategory = "pdf" | "image";
-export type ToolGroup = "organize" | "optimize" | "convert" | "edit" | "security" | "ai";
+export type ToolCategory = "pdf" | "image" | "dev" | "generators" | "calculators";
+export type ToolGroup =
+  | "organize"
+  | "optimize"
+  | "convert"
+  | "edit"
+  | "security"
+  | "ai"
+  | "format"
+  | "generate"
+  | "calculate";
 
 export interface ToolMeta {
   slug: string;
@@ -15,6 +24,9 @@ export interface ToolMeta {
 export const categories: { id: ToolCategory; label: string; description: string }[] = [
   { id: "pdf", label: "PDF Tools", description: "Merge, split, compress and convert PDFs" },
   { id: "image", label: "Image Tools", description: "Edit, convert and enhance images" },
+  { id: "dev", label: "Developer Tools", description: "Formatters, validators and generators for engineers" },
+  { id: "generators", label: "Generators", description: "QR codes, passwords, avatars and more" },
+  { id: "calculators", label: "Calculators", description: "Finance, health and everyday math" },
 ];
 
 export const groupLabels: Record<ToolGroup, string> = {
@@ -24,6 +36,9 @@ export const groupLabels: Record<ToolGroup, string> = {
   edit: "Edit",
   security: "Security",
   ai: "AI",
+  format: "Format & Validate",
+  generate: "Generate",
+  calculate: "Calculate",
 };
 
 export const tools: ToolMeta[] = [
@@ -296,6 +311,242 @@ export const tools: ToolMeta[] = [
     premium: "free",
     seoKeyword: "image to pdf converter",
     keywords: ["photos to pdf", "jpg to pdf", "scan pictures into pdf", "make a pdf from photos"],
+  },
+
+  // --- Developer Tools ---
+  {
+    slug: "json-formatter",
+    category: "dev",
+    group: "format",
+    name: "JSON Formatter",
+    description: "Pretty-print, minify and validate JSON.",
+    premium: "free",
+    seoKeyword: "json formatter online",
+    keywords: ["json validator", "pretty print json", "minify json", "beautify json"],
+  },
+  {
+    slug: "base64",
+    category: "dev",
+    group: "format",
+    name: "Base64 Encode/Decode",
+    description: "Convert text to and from Base64.",
+    premium: "free",
+    seoKeyword: "base64 encode decode online",
+    keywords: ["base64 converter", "encode string", "decode base64"],
+  },
+  {
+    slug: "url-encode",
+    category: "dev",
+    group: "format",
+    name: "URL Encode/Decode",
+    description: "Percent-encode or decode a URL or query string.",
+    premium: "free",
+    seoKeyword: "url encoder decoder",
+    keywords: ["percent encoding", "uri encode", "escape url"],
+  },
+  {
+    slug: "hash-generator",
+    category: "dev",
+    group: "format",
+    name: "Hash Generator",
+    description: "Generate MD5, SHA-1, SHA-256 and SHA-512 hashes.",
+    premium: "free",
+    seoKeyword: "hash generator online",
+    keywords: ["md5 generator", "sha256 hash", "checksum generator"],
+  },
+  {
+    slug: "uuid-generator",
+    category: "dev",
+    group: "format",
+    name: "UUID Generator",
+    description: "Generate random UUID v4 identifiers.",
+    premium: "free",
+    seoKeyword: "uuid generator online",
+    keywords: ["guid generator", "random id", "unique identifier"],
+  },
+  {
+    slug: "jwt-decoder",
+    category: "dev",
+    group: "format",
+    name: "JWT Decoder",
+    description: "Inspect a JSON Web Token's header and payload.",
+    premium: "free",
+    seoKeyword: "jwt decoder online",
+    keywords: ["decode jwt", "inspect token", "parse json web token"],
+  },
+  {
+    slug: "regex-tester",
+    category: "dev",
+    group: "format",
+    name: "Regex Tester",
+    description: "Test a regular expression against sample text live.",
+    premium: "free",
+    seoKeyword: "regex tester online",
+    keywords: ["test regular expression", "regex match", "pattern tester"],
+  },
+  {
+    slug: "text-diff",
+    category: "dev",
+    group: "format",
+    name: "Text Diff Checker",
+    description: "Compare two blocks of text and highlight differences.",
+    premium: "free",
+    seoKeyword: "text diff checker online",
+    keywords: ["compare text", "find differences", "diff tool"],
+  },
+  {
+    slug: "markdown-preview",
+    category: "dev",
+    group: "format",
+    name: "Markdown Preview",
+    description: "Write Markdown and see the rendered output live.",
+    premium: "free",
+    seoKeyword: "markdown previewer online",
+    keywords: ["markdown editor", "md to html", "render markdown"],
+  },
+  {
+    slug: "timestamp-converter",
+    category: "dev",
+    group: "format",
+    name: "Timestamp Converter",
+    description: "Convert between Unix timestamps and human-readable dates.",
+    premium: "free",
+    seoKeyword: "unix timestamp converter",
+    keywords: ["epoch converter", "unix time to date", "date to timestamp"],
+  },
+  {
+    slug: "color-converter",
+    category: "dev",
+    group: "format",
+    name: "Color Converter",
+    description: "Convert colors between HEX, RGB and HSL.",
+    premium: "free",
+    seoKeyword: "color converter online",
+    keywords: ["hex to rgb", "rgb to hsl", "color picker"],
+  },
+
+  // --- Generators ---
+  {
+    slug: "qr-code",
+    category: "generators",
+    group: "generate",
+    name: "QR Code Generator",
+    description: "Turn text, a URL or contact info into a scannable QR code.",
+    premium: "free",
+    seoKeyword: "qr code generator online",
+    keywords: ["make a qr code", "generate qr", "create qr code free"],
+  },
+  {
+    slug: "barcode",
+    category: "generators",
+    group: "generate",
+    name: "Barcode Generator",
+    description: "Generate common barcode formats from text or numbers.",
+    premium: "free",
+    seoKeyword: "barcode generator online",
+    keywords: ["make a barcode", "generate barcode", "upc generator"],
+  },
+  {
+    slug: "password",
+    category: "generators",
+    group: "generate",
+    name: "Password Generator",
+    description: "Create a strong, random password with the rules you choose.",
+    premium: "free",
+    seoKeyword: "random password generator",
+    keywords: ["strong password", "secure password generator", "random password"],
+  },
+  {
+    slug: "random-number",
+    category: "generators",
+    group: "generate",
+    name: "Random Number Generator",
+    description: "Generate one or more random numbers in a range.",
+    premium: "free",
+    seoKeyword: "random number generator online",
+    keywords: ["pick a random number", "dice roller", "number picker"],
+  },
+  {
+    slug: "avatar",
+    category: "generators",
+    group: "generate",
+    name: "Avatar Generator",
+    description: "Generate a unique geometric avatar from any name or seed.",
+    premium: "free",
+    seoKeyword: "avatar generator online",
+    keywords: ["identicon generator", "profile picture generator", "placeholder avatar"],
+  },
+  {
+    slug: "fake-data",
+    category: "generators",
+    group: "generate",
+    name: "Fake Data Generator",
+    description: "Generate sample names, emails and addresses for testing.",
+    premium: "free",
+    seoKeyword: "fake data generator online",
+    keywords: ["dummy data", "test data generator", "sample names and emails"],
+  },
+
+  // --- Calculators ---
+  {
+    slug: "percentage",
+    category: "calculators",
+    group: "calculate",
+    name: "Percentage Calculator",
+    description: "Work out percentages, increases and decreases.",
+    premium: "free",
+    seoKeyword: "percentage calculator online",
+    keywords: ["percent calculator", "percent increase", "percent of a number"],
+  },
+  {
+    slug: "bmi",
+    category: "calculators",
+    group: "calculate",
+    name: "BMI Calculator",
+    description: "Calculate body mass index from height and weight.",
+    premium: "free",
+    seoKeyword: "bmi calculator online",
+    keywords: ["body mass index", "am i overweight", "healthy weight calculator"],
+  },
+  {
+    slug: "age",
+    category: "calculators",
+    group: "calculate",
+    name: "Age Calculator",
+    description: "Find the exact age or duration between two dates.",
+    premium: "free",
+    seoKeyword: "age calculator online",
+    keywords: ["how old am i", "date difference", "days between dates"],
+  },
+  {
+    slug: "loan-emi",
+    category: "calculators",
+    group: "calculate",
+    name: "Loan / EMI Calculator",
+    description: "Calculate monthly loan payments and total interest.",
+    premium: "free",
+    seoKeyword: "loan emi calculator online",
+    keywords: ["mortgage calculator", "monthly payment calculator", "interest calculator"],
+  },
+  {
+    slug: "unit-converter",
+    category: "calculators",
+    group: "calculate",
+    name: "Unit Converter",
+    description: "Convert length, weight, and temperature units.",
+    premium: "free",
+    seoKeyword: "unit converter online",
+    keywords: ["convert units", "kg to lbs", "celsius to fahrenheit", "km to miles"],
+  },
+  {
+    slug: "tip",
+    category: "calculators",
+    group: "calculate",
+    name: "Tip Calculator",
+    description: "Split a bill and calculate the tip amount per person.",
+    premium: "free",
+    seoKeyword: "tip calculator online",
+    keywords: ["split the bill", "gratuity calculator", "how much to tip"],
   },
 ];
 

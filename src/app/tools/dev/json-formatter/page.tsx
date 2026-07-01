@@ -1,0 +1,20 @@
+import type { Metadata } from "next";
+import { buildToolMetadata, toolJsonLd } from "@/lib/seo";
+import ClientPage from "./client";
+
+export const metadata: Metadata = buildToolMetadata("dev", "json-formatter");
+
+export default function Page() {
+  const jsonLd = toolJsonLd("dev", "json-formatter");
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
+      <ClientPage />
+    </>
+  );
+}
