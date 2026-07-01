@@ -12,16 +12,37 @@ const FORMATS = [
   { label: "WebP", mime: "image/webp", ext: "webp" },
 ] as const;
 
+function isHeic(file: File): boolean {
+  return /heic|heif/i.test(file.type) || /\.(heic|heif)$/i.test(file.name);
+}
+
 export default function ConvertImagePage() {
   const [file, setFile] = useState<File | null>(null);
+  const [sourcePreview, setSourcePreview] = useState<string | null>(null);
   const [format, setFormat] = useState<(typeof FORMATS)[number]>(FORMATS[0]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<ResultFile | null>(null);
 
-  function handleFile(files: File[]) {
+  async function handleFile(files: File[]) {
     setError(null);
-    setFile(files[0]);
+    setResult(null);
+    setSourcePreview(null);
+    const f = files[0];
+    setFile(f);
+
+    if (isHeic(f)) {
+      setError(
+        "HEIC/HEIF photos (the default iPhone format) can't be decoded in a browser yet. Export or share it as JPG from your device first, then convert it here.",
+      );
+      return;
+    }
+    try {
+      await loadImage(f);
+      setSourcePreview(URL.createObjectURL(f));
+    } catch {
+      setError("This file doesn't look like a supported image format.");
+    }
   }
 
   async function convert() {
@@ -54,9 +75,12 @@ export default function ConvertImagePage() {
 
   function reset() {
     setFile(null);
+    setSourcePreview(null);
     setResult(null);
     setError(null);
   }
+
+  const canConvert = file && sourcePreview && !isHeic(file);
 
   return (
     <ToolShell title="Convert Image Format" description="Convert between JPG, PNG and WebP.">
@@ -65,23 +89,31 @@ export default function ConvertImagePage() {
       ) : !file ? (
         <Dropzone accept="image/*" onFiles={handleFile} label="Drop an image here or click to browse" />
       ) : (
-        <div className="flex flex-col gap-4">
-          <p className="text-sm text-ink/60">{file.name}</p>
-          <div className="flex gap-2">
-            {FORMATS.map((f) => (
-              <button
-                key={f.ext}
-                onClick={() => setFormat(f)}
-                className={format.ext === f.ext ? "btn-primary" : "btn-secondary"}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-          {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={convert} disabled={busy} className="btn-primary">
-            {busy ? "Converting…" : `Convert to ${format.label}`}
-          </button>
+        <div className="flex flex-col items-center gap-4">
+          {sourcePreview && (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={sourcePreview} alt="Preview" className="max-h-56 max-w-full rounded-lg border border-ink/10" />
+          )}
+          <p className="w-full text-sm text-ink/60">{file.name}</p>
+          {canConvert && (
+            <div className="flex w-full gap-2">
+              {FORMATS.map((f) => (
+                <button
+                  key={f.ext}
+                  onClick={() => setFormat(f)}
+                  className={format.ext === f.ext ? "btn-primary" : "btn-secondary"}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
+          )}
+          {error && <p className="w-full text-sm text-flag-red">{error}</p>}
+          {canConvert && (
+            <button onClick={convert} disabled={busy} className="btn-primary w-full">
+              {busy ? "Converting…" : `Convert to ${format.label}`}
+            </button>
+          )}
         </div>
       )}
     </ToolShell>

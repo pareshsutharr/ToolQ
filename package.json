@@ -9,16 +9,20 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
     "@imgly/background-removal": "^1.5.9",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.0",
     "clsx": "^2.1.1",
+    "diff": "^9.0.0",
     "jszip": "^3.10.1",
     "next": "^15.1.0",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^4.9.155",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tesseract.js": "^7.0.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
