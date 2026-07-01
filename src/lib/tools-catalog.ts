@@ -1,8 +1,10 @@
 export type ToolCategory = "pdf" | "image";
+export type ToolGroup = "organize" | "optimize" | "convert" | "edit" | "security" | "ai";
 
 export interface ToolMeta {
   slug: string;
   category: ToolCategory;
+  group: ToolGroup;
   name: string;
   description: string;
   premium: "free" | "partial" | "premium";
@@ -14,10 +16,20 @@ export const categories: { id: ToolCategory; label: string; description: string 
   { id: "image", label: "Image Tools", description: "Edit, convert and enhance images" },
 ];
 
+export const groupLabels: Record<ToolGroup, string> = {
+  organize: "Organize",
+  optimize: "Optimize",
+  convert: "Convert",
+  edit: "Edit",
+  security: "Security",
+  ai: "AI",
+};
+
 export const tools: ToolMeta[] = [
   {
     slug: "merge",
     category: "pdf",
+    group: "organize",
     name: "Merge PDF",
     description: "Combine multiple PDFs into one ordered document.",
     premium: "partial",
@@ -26,46 +38,16 @@ export const tools: ToolMeta[] = [
   {
     slug: "split",
     category: "pdf",
+    group: "organize",
     name: "Split PDF",
     description: "Extract page ranges into separate PDF files.",
     premium: "partial",
     seoKeyword: "split pdf online",
   },
   {
-    slug: "compress",
-    category: "pdf",
-    name: "Compress PDF",
-    description: "Shrink PDF file size while preserving quality.",
-    premium: "partial",
-    seoKeyword: "compress pdf online",
-  },
-  {
-    slug: "to-jpg",
-    category: "pdf",
-    name: "PDF to JPG",
-    description: "Export every page as a high-quality JPG image.",
-    premium: "free",
-    seoKeyword: "pdf to jpg",
-  },
-  {
-    slug: "to-text",
-    category: "pdf",
-    name: "PDF to Text",
-    description: "Extract raw text content from any PDF.",
-    premium: "free",
-    seoKeyword: "pdf to text",
-  },
-  {
-    slug: "rotate",
-    category: "pdf",
-    name: "Rotate PDF",
-    description: "Fix sideways or upside-down pages.",
-    premium: "free",
-    seoKeyword: "rotate pdf",
-  },
-  {
     slug: "remove-pages",
     category: "pdf",
+    group: "organize",
     name: "Remove Pages",
     description: "Delete specific pages from a PDF.",
     premium: "free",
@@ -74,6 +56,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "extract-pages",
     category: "pdf",
+    group: "organize",
     name: "Extract Pages",
     description: "Pull specific pages out into a new PDF.",
     premium: "free",
@@ -82,14 +65,25 @@ export const tools: ToolMeta[] = [
   {
     slug: "organize",
     category: "pdf",
+    group: "organize",
     name: "Organize PDF",
     description: "Reorder, rotate, or delete pages in one view.",
     premium: "free",
     seoKeyword: "organize pdf pages",
   },
   {
+    slug: "compress",
+    category: "pdf",
+    group: "optimize",
+    name: "Compress PDF",
+    description: "Shrink PDF file size while preserving quality.",
+    premium: "partial",
+    seoKeyword: "compress pdf online",
+  },
+  {
     slug: "repair",
     category: "pdf",
+    group: "optimize",
     name: "Repair PDF",
     description: "Attempt to fix a corrupted or malformed PDF.",
     premium: "free",
@@ -98,62 +92,34 @@ export const tools: ToolMeta[] = [
   {
     slug: "ocr",
     category: "pdf",
+    group: "optimize",
     name: "OCR PDF",
     description: "Make a scanned PDF searchable and selectable.",
     premium: "partial",
     seoKeyword: "ocr pdf online",
   },
   {
-    slug: "page-numbers",
+    slug: "to-jpg",
     category: "pdf",
-    name: "Add Page Numbers",
-    description: "Number every page, positioned however you like.",
+    group: "convert",
+    name: "PDF to JPG",
+    description: "Export every page as a high-quality JPG image.",
     premium: "free",
-    seoKeyword: "add page numbers to pdf",
+    seoKeyword: "pdf to jpg",
   },
   {
-    slug: "watermark",
+    slug: "to-text",
     category: "pdf",
-    name: "Add Watermark",
-    description: "Overlay diagonal text across every page.",
+    group: "convert",
+    name: "PDF to Text",
+    description: "Extract raw text content from any PDF.",
     premium: "free",
-    seoKeyword: "add watermark to pdf",
-  },
-  {
-    slug: "crop",
-    category: "pdf",
-    name: "Crop PDF",
-    description: "Trim page margins, previewed before you commit.",
-    premium: "free",
-    seoKeyword: "crop pdf pages",
-  },
-  {
-    slug: "fill-form",
-    category: "pdf",
-    name: "Fill PDF Form",
-    description: "Fill in an interactive PDF form's fields.",
-    premium: "free",
-    seoKeyword: "fill pdf form online",
-  },
-  {
-    slug: "sign",
-    category: "pdf",
-    name: "Sign PDF",
-    description: "Draw a signature and place it on the page.",
-    premium: "free",
-    seoKeyword: "sign pdf online",
-  },
-  {
-    slug: "compare",
-    category: "pdf",
-    name: "Compare PDF",
-    description: "See what changed between two versions of a document.",
-    premium: "partial",
-    seoKeyword: "compare pdf documents",
+    seoKeyword: "pdf to text",
   },
   {
     slug: "excel-to-pdf",
     category: "pdf",
+    group: "convert",
     name: "Excel to PDF",
     description: "Render a spreadsheet as a paginated PDF table.",
     premium: "free",
@@ -162,14 +128,79 @@ export const tools: ToolMeta[] = [
   {
     slug: "to-excel",
     category: "pdf",
+    group: "convert",
     name: "PDF to Excel",
     description: "Extract text and tables into a spreadsheet.",
     premium: "partial",
     seoKeyword: "pdf to excel converter",
   },
   {
+    slug: "rotate",
+    category: "pdf",
+    group: "edit",
+    name: "Rotate PDF",
+    description: "Fix sideways or upside-down pages.",
+    premium: "free",
+    seoKeyword: "rotate pdf",
+  },
+  {
+    slug: "page-numbers",
+    category: "pdf",
+    group: "edit",
+    name: "Add Page Numbers",
+    description: "Number every page, positioned however you like.",
+    premium: "free",
+    seoKeyword: "add page numbers to pdf",
+  },
+  {
+    slug: "watermark",
+    category: "pdf",
+    group: "edit",
+    name: "Add Watermark",
+    description: "Overlay diagonal text across every page.",
+    premium: "free",
+    seoKeyword: "add watermark to pdf",
+  },
+  {
+    slug: "crop",
+    category: "pdf",
+    group: "edit",
+    name: "Crop PDF",
+    description: "Trim page margins, previewed before you commit.",
+    premium: "free",
+    seoKeyword: "crop pdf pages",
+  },
+  {
+    slug: "fill-form",
+    category: "pdf",
+    group: "edit",
+    name: "Fill PDF Form",
+    description: "Fill in an interactive PDF form's fields.",
+    premium: "free",
+    seoKeyword: "fill pdf form online",
+  },
+  {
+    slug: "sign",
+    category: "pdf",
+    group: "security",
+    name: "Sign PDF",
+    description: "Draw a signature and place it on the page.",
+    premium: "free",
+    seoKeyword: "sign pdf online",
+  },
+  {
+    slug: "compare",
+    category: "pdf",
+    group: "security",
+    name: "Compare PDF",
+    description: "See what changed between two versions of a document.",
+    premium: "partial",
+    seoKeyword: "compare pdf documents",
+  },
+  {
     slug: "unlock",
     category: "pdf",
+    group: "security",
     name: "Unlock PDF",
     description: "Remove password protection from a PDF.",
     premium: "free",
@@ -178,6 +209,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "summarize",
     category: "pdf",
+    group: "ai",
     name: "AI Summarizer",
     description: "Condense a PDF into key points — runs entirely in your browser.",
     premium: "premium",
@@ -186,6 +218,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "translate",
     category: "pdf",
+    group: "ai",
     name: "Translate PDF",
     description: "Translate a PDF's text — runs entirely in your browser.",
     premium: "premium",
@@ -194,6 +227,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "remove-background",
     category: "image",
+    group: "ai",
     name: "Remove Background",
     description: "Instantly isolate a subject with AI — runs entirely in your browser.",
     premium: "partial",
@@ -202,6 +236,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "compress",
     category: "image",
+    group: "optimize",
     name: "Compress Image",
     description: "Reduce image file size with minimal quality loss.",
     premium: "partial",
@@ -210,6 +245,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "resize",
     category: "image",
+    group: "edit",
     name: "Resize Image",
     description: "Change image dimensions precisely or by percentage.",
     premium: "free",
@@ -218,6 +254,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "convert",
     category: "image",
+    group: "convert",
     name: "Convert Image Format",
     description: "Convert between JPG, PNG and WebP.",
     premium: "free",
@@ -226,6 +263,7 @@ export const tools: ToolMeta[] = [
   {
     slug: "to-pdf",
     category: "image",
+    group: "convert",
     name: "Image to PDF",
     description: "Combine one or more images into a single PDF.",
     premium: "free",
@@ -235,6 +273,21 @@ export const tools: ToolMeta[] = [
 
 export function toolsByCategory(category: ToolCategory) {
   return tools.filter((t) => t.category === category);
+}
+
+export function toolsByCategoryGrouped(category: ToolCategory) {
+  const items = toolsByCategory(category);
+  const groups = new Map<ToolGroup, ToolMeta[]>();
+  for (const tool of items) {
+    const list = groups.get(tool.group) ?? [];
+    list.push(tool);
+    groups.set(tool.group, list);
+  }
+  return Array.from(groups.entries()).map(([group, toolsInGroup]) => ({
+    group,
+    label: groupLabels[group],
+    tools: toolsInGroup,
+  }));
 }
 
 export function findTool(category: ToolCategory, slug: string) {

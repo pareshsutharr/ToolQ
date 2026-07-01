@@ -1,0 +1,73 @@
+import {
+  FileStack,
+  Scissors,
+  FileMinus2,
+  FileOutput,
+  LayoutGrid,
+  Minimize2,
+  Wrench,
+  ScanText,
+  FileImage,
+  FileType,
+  FileSpreadsheet,
+  RotateCw,
+  Hash,
+  Stamp,
+  Crop,
+  ClipboardList,
+  PenTool,
+  GitCompareArrows,
+  Unlock,
+  Sparkles,
+  Languages,
+  ImageOff,
+  Image,
+  Maximize2,
+  RefreshCw,
+  FileUp,
+  type LucideIcon,
+} from "lucide-react";
+import type { ToolGroup } from "@/lib/tools-catalog";
+
+export const groupColors: Record<ToolGroup, string> = {
+  organize: "bg-node-blue/10 text-node-blue",
+  optimize: "bg-spark-lime/15 text-emerald-700",
+  convert: "bg-amber/15 text-amber",
+  edit: "bg-violet-500/10 text-violet-600",
+  security: "bg-sky-500/10 text-sky-600",
+  ai: "bg-ai-gradient text-white",
+};
+
+const iconByKey: Record<string, LucideIcon> = {
+  "pdf-merge": FileStack,
+  "pdf-split": Scissors,
+  "pdf-remove-pages": FileMinus2,
+  "pdf-extract-pages": FileOutput,
+  "pdf-organize": LayoutGrid,
+  "pdf-compress": Minimize2,
+  "pdf-repair": Wrench,
+  "pdf-ocr": ScanText,
+  "pdf-to-jpg": FileImage,
+  "pdf-to-text": FileType,
+  "pdf-excel-to-pdf": FileSpreadsheet,
+  "pdf-to-excel": FileSpreadsheet,
+  "pdf-rotate": RotateCw,
+  "pdf-page-numbers": Hash,
+  "pdf-watermark": Stamp,
+  "pdf-crop": Crop,
+  "pdf-fill-form": ClipboardList,
+  "pdf-sign": PenTool,
+  "pdf-compare": GitCompareArrows,
+  "pdf-unlock": Unlock,
+  "pdf-summarize": Sparkles,
+  "pdf-translate": Languages,
+  "image-remove-background": ImageOff,
+  "image-compress": Image,
+  "image-resize": Maximize2,
+  "image-convert": RefreshCw,
+  "image-to-pdf": FileUp,
+};
+
+export function getToolIcon(category: string, slug: string): LucideIcon {
+  return iconByKey[`${category}-${slug}`] ?? FileType;
+}

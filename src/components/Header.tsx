@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/is-configured";
-import { categories } from "@/lib/tools-catalog";
 import ToolqMark from "@/components/ToolqMark";
+import MegaMenu from "@/components/MegaMenu";
 
 export default function Header() {
   const [email, setEmail] = useState<string | null>(null);
@@ -36,13 +36,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-ink/70 md:flex">
-          {categories.map((c) => (
-            <Link key={c.id} href={`/tools/${c.id}`} className="hover:text-node-blue">
-              {c.label}
-            </Link>
-          ))}
-        </nav>
+        <MegaMenu />
 
         <div className="flex items-center gap-3">
           {!isSupabaseConfigured() ? null : email ? (
