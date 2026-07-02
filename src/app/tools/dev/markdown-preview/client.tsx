@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ToolShell from "@/components/ToolShell";
 
-const DEFAULT_MARKDOWN = `# Heading\n\nType some **Markdown** here and see it rendered on the right.\n\n- List item one\n- List item two\n\n[A link](https://toolq.online)`;
+const DEFAULT_MARKDOWN = `# Heading\n\nType some **Markdown** here and see it rendered on the right.\n\n- List item one\n- List item two\n\n[A link](https://www.toolq.online)`;
 
 export default function MarkdownPreviewPage() {
   const [markdown, setMarkdown] = useState(DEFAULT_MARKDOWN);

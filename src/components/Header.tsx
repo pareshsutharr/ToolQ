@@ -39,6 +39,10 @@ export default function Header() {
 
         <MegaMenu />
 
+        <Link href="/blog" className="hidden text-sm font-medium text-ink/70 hover:text-node-blue md:inline">
+          Blog
+        </Link>
+
         <div className="flex-1" />
 
         <SearchBar />

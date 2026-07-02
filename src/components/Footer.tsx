@@ -29,9 +29,14 @@ export default function Footer() {
             Files are processed in your browser and never uploaded unless a tool says otherwise.
             © {new Date().getFullYear()} toolq.online.
           </p>
-          <Link href="/pricing" className="text-xs font-medium text-ink/50 hover:text-node-blue">
-            Pricing
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/blog" className="text-xs font-medium text-ink/50 hover:text-node-blue">
+              Blog
+            </Link>
+            <Link href="/pricing" className="text-xs font-medium text-ink/50 hover:text-node-blue">
+              Pricing
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

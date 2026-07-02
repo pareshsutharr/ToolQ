@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { findTool, categories, toolsByCategory, type ToolCategory } from "@/lib/tools-catalog";
 
-export const SITE_URL = "https://toolq.online";
+export const SITE_URL = "https://www.toolq.online";
 export const SITE_NAME = "toolq.online";
 export const BRAND_NAME = "toolQ";
 export const SITE_TITLE = "toolQ - Free Online PDF, Image, Developer and Calculator Tools";
