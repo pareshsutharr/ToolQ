@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildToolMetadata, toolJsonLd } from "@/lib/seo";
+import PremiumGuard from "@/components/PremiumGuard";
 import ClientPage from "./client";
 
 export const metadata: Metadata = buildToolMetadata("pdf", "translate");
@@ -14,7 +15,9 @@ export default function Page() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-      <ClientPage />
+      <PremiumGuard category="pdf" slug="translate">
+        <ClientPage />
+      </PremiumGuard>
     </>
   );
 }

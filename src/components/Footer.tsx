@@ -24,10 +24,15 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <p className="mt-10 text-xs text-ink/40">
-          Files are processed in your browser and never uploaded unless a tool says otherwise. ©{" "}
-          {new Date().getFullYear()} toolq.online.
-        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 pt-6">
+          <p className="text-xs text-ink/40">
+            Files are processed in your browser and never uploaded unless a tool says otherwise.
+            © {new Date().getFullYear()} toolq.online.
+          </p>
+          <Link href="/pricing" className="text-xs font-medium text-ink/50 hover:text-node-blue">
+            Pricing
+          </Link>
+        </div>
       </div>
     </footer>
   );

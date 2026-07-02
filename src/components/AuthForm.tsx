@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/is-configured";
@@ -113,7 +114,14 @@ export default function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
         />
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-ink/70">Password</label>
+        <div className="mb-1 flex items-center justify-between">
+          <label className="block text-sm font-medium text-ink/70">Password</label>
+          {mode === "sign-in" && (
+            <Link href="/forgot-password" className="text-xs font-medium text-node-blue">
+              Forgot password?
+            </Link>
+          )}
+        </div>
         <input
           type="password"
           required

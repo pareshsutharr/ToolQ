@@ -46,7 +46,12 @@ export default function Header() {
         <div className="flex items-center gap-3">
           {!isSupabaseConfigured() ? null : email ? (
             <>
-              <span className="hidden text-sm text-ink/60 sm:inline">{email}</span>
+              <Link href="/admin" className="hidden text-sm text-ink/60 hover:text-node-blue sm:inline">
+                Admin
+              </Link>
+              <Link href="/account" className="hidden text-sm text-ink/60 hover:text-node-blue sm:inline">
+                {email}
+              </Link>
               <button onClick={signOut} className="btn-secondary">
                 Sign out
               </button>
