@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import AuthForm from "@/components/AuthForm";
+
+export const metadata: Metadata = {
+  title: "Sign up",
+  robots: { index: false, follow: true },
+};
 
 export default function SignUpPage() {
   return (

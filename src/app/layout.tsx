@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -36,6 +36,13 @@ export const metadata: Metadata = {
     title: "toolq.online — Every online tool you need, one account",
     description: SITE_DESCRIPTION,
   },
+  applicationName: SITE_NAME,
+  formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#4F46E5",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
