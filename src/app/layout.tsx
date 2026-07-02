@@ -3,7 +3,7 @@ import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_URL, SITE_NAME } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/seo";
 
 // Outfit stands in for the brand's Satoshi display face until the licensed
 // Satoshi files are added (see Fontshare) — swap the import when available.
@@ -11,32 +11,61 @@ const display = Outfit({ subsets: ["latin"], variable: "--font-display" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
-const SITE_DESCRIPTION =
-  "Compress, merge, convert and edit PDFs and images free — fast, private, browser-based tools.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "toolq.online — Every online tool you need, one account",
+    default: SITE_TITLE,
     template: "%s | toolq.online",
   },
   description: SITE_DESCRIPTION,
-  robots: { index: true, follow: true },
+  keywords: [
+    "online tools",
+    "pdf tools",
+    "image tools",
+    "developer tools",
+    "calculators",
+    "generators",
+    "free browser tools",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: "toolq.online — Every online tool you need, one account",
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     locale: "en_US",
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_TITLE }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "toolq.online — Every online tool you need, one account",
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
   },
   applicationName: SITE_NAME,
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon",
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "default",
+  },
+  referrer: "origin-when-cross-origin",
   formatDetection: { telephone: false },
 };
 

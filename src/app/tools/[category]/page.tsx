@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { categories, toolsByCategory, type ToolCategory } from "@/lib/tools-catalog";
 import ToolCard from "@/components/ToolCard";
-import { absoluteUrl, buildCategoryMetadata, SITE_URL } from "@/lib/seo";
+import { buildCategoryMetadata, categoryJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ category: c.id }));
@@ -28,37 +28,16 @@ export default async function CategoryPage({
   if (!meta) notFound();
 
   const items = toolsByCategory(category as ToolCategory);
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: meta.label,
-    description: meta.description,
-    url: absoluteUrl(`/tools/${meta.id}`),
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: meta.label, item: absoluteUrl(`/tools/${meta.id}`) },
-      ],
-    },
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: items.map((tool, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        name: tool.name,
-        url: absoluteUrl(`/tools/${tool.category}/${tool.slug}`),
-      })),
-    },
-  };
+  const jsonLd = categoryJsonLd(category as ToolCategory);
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-14">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <nav aria-label="Breadcrumb" className="mb-4">
         <ol className="flex items-center gap-1.5 text-xs text-ink/50">
           <li>

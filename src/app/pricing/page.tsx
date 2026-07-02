@@ -3,12 +3,29 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { tools } from "@/lib/tools-catalog";
 import { getCurrentUser } from "@/lib/profile";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Pricing",
-  description: "toolq is free for every everyday tool. Upgrade for AI-powered PDF tools.",
+  title: "Pricing - Free Online Tools and Premium AI Tools",
+  description:
+    "Most toolQ PDF, image, developer, generator and calculator tools are free. Premium AI PDF tools are available through early access.",
   alternates: { canonical: absoluteUrl("/pricing") },
+  openGraph: {
+    title: "Pricing - Free Online Tools and Premium AI Tools",
+    description:
+      "Most toolQ tools are free forever. Premium unlocks early-access AI-powered PDF workflows.",
+    url: absoluteUrl("/pricing"),
+    siteName: SITE_NAME,
+    type: "website",
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "toolQ pricing" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pricing - Free Online Tools and Premium AI Tools",
+    description:
+      "Most toolQ tools are free forever. Premium unlocks early-access AI-powered PDF workflows.",
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 const SUPPORT_EMAIL = "hello@toolq.online";
