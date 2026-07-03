@@ -1,4 +1,4 @@
-import { findTool, type ToolCategory } from "@/lib/tools-catalog";
+import { categories, findTool, tools, type ToolCategory, type ToolMeta } from "@/lib/tools-catalog";
 
 export interface BlogToolLink {
   category: ToolCategory;
@@ -23,7 +23,7 @@ export interface BlogPost {
   }[];
 }
 
-export const blogPosts: BlogPost[] = [
+const featuredBlogPosts: BlogPost[] = [
   {
     slug: "compress-pdf-for-email-without-losing-quality",
     title: "How to Compress a PDF for Email Without Losing Quality",
@@ -321,6 +321,185 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+const GENERATED_START_AT = new Date(Date.UTC(2026, 6, 30, 9, 0, 0));
+const GENERATED_POST_COUNT = 96;
+
+const alternateTools: Record<ToolCategory, BlogToolLink[]> = {
+  pdf: [
+    { category: "pdf", slug: "compress", reason: "Shrink the finished document before sharing." },
+    { category: "pdf", slug: "merge", reason: "Combine related documents into one clean file." },
+    { category: "pdf", slug: "split", reason: "Separate only the pages a recipient needs." },
+  ],
+  image: [
+    { category: "image", slug: "resize", reason: "Set practical dimensions before publishing." },
+    { category: "image", slug: "compress", reason: "Reduce file size after editing." },
+    { category: "image", slug: "convert", reason: "Choose the right image format for the job." },
+  ],
+  dev: [
+    { category: "dev", slug: "json-formatter", reason: "Format structured data before reviewing it." },
+    { category: "dev", slug: "text-diff", reason: "Compare two versions before shipping changes." },
+    { category: "dev", slug: "url-encode", reason: "Clean URLs and query strings before sharing." },
+  ],
+  generators: [
+    { category: "generators", slug: "qr-code", reason: "Create a shareable code for links and text." },
+    { category: "generators", slug: "password", reason: "Generate strong values instead of inventing them." },
+    { category: "generators", slug: "random-number", reason: "Create quick test values or fair picks." },
+  ],
+  calculators: [
+    { category: "calculators", slug: "percentage", reason: "Check percentage changes and ratios quickly." },
+    { category: "calculators", slug: "unit-converter", reason: "Convert values before adding them to a result." },
+    { category: "calculators", slug: "tip", reason: "Handle everyday totals and splits faster." },
+  ],
+};
+
+const contentAngles = [
+  {
+    key: "checklist",
+    title: (tool: ToolMeta) => `${tool.name}: A Practical Checklist Before You Share the Result`,
+    description: (tool: ToolMeta) =>
+      `A simple checklist for using ${tool.name} well, avoiding common mistakes, and finishing with a clean result.`,
+    tags: (tool: ToolMeta) => [categoryLabel(tool.category), "Checklist", "Workflow"],
+    intro: (tool: ToolMeta) =>
+      `${tool.name} is most useful when it is part of a small workflow instead of a last-minute fix. A checklist helps you avoid missing details that are easy to overlook when you are rushing.`,
+    example: (tool: ToolMeta) =>
+      `Example: use ${tool.name} on the final file, then quickly review the output before sending it to a client, teammate, upload form or public page.`,
+    steps: (tool: ToolMeta) => [
+      `Open ${tool.name} and start with the cleanest source file or text you have.`,
+      "Make one focused change instead of stacking several guesses at once.",
+      "Download or copy the result and compare it with the original.",
+      "Use the related ToolQ tools below if you need to resize, compress, validate, split or convert the result.",
+    ],
+  },
+  {
+    key: "mistakes",
+    title: (tool: ToolMeta) => `Common Mistakes to Avoid When Using ${tool.name}`,
+    description: (tool: ToolMeta) =>
+      `Avoid the small mistakes that make ${tool.name} workflows slower, messier, or harder to trust.`,
+    tags: (tool: ToolMeta) => [categoryLabel(tool.category), "Mistakes", "Tips"],
+    intro: (tool: ToolMeta) =>
+      `Most problems with ${tool.name} come from using the right tool at the wrong moment. The safer approach is to prepare the input, run the tool once, and inspect the output before moving on.`,
+    example: () =>
+      `Example: if the output looks wrong, go back to the source and fix the input rather than repeatedly processing the already-modified result.`,
+    steps: (tool: ToolMeta) => [
+      "Keep a copy of the original before making changes.",
+      `Run ${tool.name} on a small sample first when the file or text is important.`,
+      "Check names, dates, page order, dimensions, formatting or values before sharing.",
+      "Use a second related tool only after the first output is correct.",
+    ],
+  },
+  {
+    key: "fast-workflow",
+    title: (tool: ToolMeta) => `A Faster Workflow for ${tool.name}`,
+    description: (tool: ToolMeta) =>
+      `Use ${tool.name} with a repeatable workflow that saves time and keeps the final output easy to review.`,
+    tags: (tool: ToolMeta) => [categoryLabel(tool.category), "Productivity", "Guide"],
+    intro: () =>
+      `A fast workflow is not just about clicking quickly. It is about knowing what to prepare first, what to check after, and which follow-up tool completes the job.`,
+    example: (tool: ToolMeta) =>
+      `Example: batch your similar files or text snippets, process them with ${tool.name}, then review all outputs together before publishing or sending.`,
+    steps: (tool: ToolMeta) => [
+      "Decide the final format or answer you need before opening the tool.",
+      `Use ${tool.name} for the main transformation or calculation.`,
+      "Name, copy or download the result immediately so it does not get mixed with the source.",
+      "Finish with one quality check using the related tools below.",
+    ],
+  },
+  {
+    key: "real-example",
+    title: (tool: ToolMeta) => `Real Example: Solving a Small Work Problem With ${tool.name}`,
+    description: (tool: ToolMeta) =>
+      `A realistic example of how ${tool.name} fits into everyday document, image, developer or calculator work.`,
+    tags: (tool: ToolMeta) => [categoryLabel(tool.category), "Example", "Solution"],
+    intro: (tool: ToolMeta) =>
+      `Small work problems usually need a clear finish, not a complicated setup. ${tool.name} helps when you need a quick result that is easy to inspect and share.`,
+    example: (tool: ToolMeta) =>
+      `Example: a teammate asks for a cleaner version of a file, value or snippet. Use ${tool.name}, check the output, and send the final result with a short note explaining what changed.`,
+    steps: (tool: ToolMeta) => [
+      "Identify the exact problem: size, format, readability, validation, conversion or calculation.",
+      `Run the source through ${tool.name}.`,
+      "Review the output from the recipient's point of view.",
+      "Use a related ToolQ tool if the final result needs one more practical adjustment.",
+    ],
+  },
+];
+
+function generatedPublishAt(index: number) {
+  const date = new Date(GENERATED_START_AT);
+  for (let i = 1; i <= index; i += 1) {
+    date.setUTCDate(date.getUTCDate() + (i % 2 === 1 ? 4 : 3));
+  }
+  return date.toISOString();
+}
+
+function categoryLabel(category: ToolCategory) {
+  return categories.find((item) => item.id === category)?.label ?? "ToolQ";
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function relatedToolsFor(tool: ToolMeta) {
+  const primary = {
+    category: tool.category,
+    slug: tool.slug,
+    reason: `Use ${tool.name} for the main workflow in this guide.`,
+  };
+  const fallback = alternateTools[tool.category].filter((item) => item.slug !== tool.slug);
+  return [primary, ...fallback].slice(0, 3);
+}
+
+function buildGeneratedBlogPost(index: number): BlogPost {
+  const tool = tools[index % tools.length];
+  const angle = contentAngles[Math.floor(index / tools.length) % contentAngles.length];
+  const title = angle.title(tool);
+
+  return {
+    slug: `${slugify(title)}-${index + 1}`,
+    title,
+    description: angle.description(tool),
+    publishAt: generatedPublishAt(index),
+    readMinutes: 4,
+    tags: angle.tags(tool),
+    relatedTools: relatedToolsFor(tool),
+    sections: [
+      {
+        heading: "Why this workflow matters",
+        body: [
+          angle.intro(tool),
+          `${tool.description} That makes it a good fit for quick, focused work where you want the output to be understandable before you share it.`,
+        ],
+        example: angle.example(tool),
+      },
+      {
+        heading: "The ToolQ workflow",
+        body: [
+          `Start with ${tool.name}, then use the supporting tools only if the result needs another practical adjustment. This keeps the process simple and avoids creating several slightly different versions of the same file, value or text.`,
+        ],
+        steps: angle.steps(tool),
+      },
+      {
+        heading: "Quality check before you finish",
+        body: [
+          "Before you send, publish or save the result, check the thing a real person will notice first: readability, page order, image size, copied value, formatting, link behavior or final number.",
+          "If something looks off, go back to the original input and rerun the workflow once. Reworking from the clean source is usually faster than fixing a chain of edited outputs.",
+        ],
+      },
+    ],
+  };
+}
+
+const generatedBlogPosts = Array.from({ length: GENERATED_POST_COUNT }, (_item, index) =>
+  buildGeneratedBlogPost(index),
+);
+
+export const blogPosts: BlogPost[] = [...featuredBlogPosts, ...generatedBlogPosts].sort(
+  (a, b) => new Date(a.publishAt).getTime() - new Date(b.publishAt).getTime(),
+);
 
 export function getPublishedBlogPosts(now = new Date()) {
   return blogPosts

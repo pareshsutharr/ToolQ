@@ -23,7 +23,8 @@ GitHub Actions also runs this daily and can be triggered manually from the
 
 Blog posts live in `src/lib/blog.ts`. Each post has a `publishAt` date. The
 blog index, article pages, and sitemap only expose posts whose publish date has
-arrived, so you can load several weeks of posts at once and let ToolQ publish
-two guides per week automatically.
+arrived, so ToolQ can publish scheduled posts automatically after deployment.
 
 Current cadence: Monday and Thursday at 09:00 UTC.
+
+Current schedule: 104 posts, enough for one year at two posts per week.

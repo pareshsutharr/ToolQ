@@ -312,6 +312,16 @@ export const tools: ToolMeta[] = [
     seoKeyword: "image to pdf converter",
     keywords: ["photos to pdf", "jpg to pdf", "scan pictures into pdf", "make a pdf from photos"],
   },
+  {
+    slug: "to-text",
+    category: "image",
+    group: "ai",
+    name: "Image to Text (OCR)",
+    description: "Extract text from a photo or screenshot, edit it, then export.",
+    premium: "partial",
+    seoKeyword: "image to text converter",
+    keywords: ["ocr image online", "extract text from photo", "picture to text", "screenshot to text", "jpg to text"],
+  },
 
   // --- Developer Tools ---
   {

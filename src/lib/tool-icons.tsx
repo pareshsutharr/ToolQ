@@ -47,6 +47,7 @@ import {
   Landmark,
   Ruler,
   Receipt,
+  TextCursorInput,
   type LucideIcon,
 } from "lucide-react";
 import type { ToolGroup } from "@/lib/tools-catalog";
@@ -91,6 +92,7 @@ const iconByKey: Record<string, LucideIcon> = {
   "image-resize": Maximize2,
   "image-convert": RefreshCw,
   "image-to-pdf": FileUp,
+  "image-to-text": TextCursorInput,
   "dev-json-formatter": Braces,
   "dev-base64": Binary,
   "dev-url-encode": Link,
