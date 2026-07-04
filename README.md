@@ -1,5 +1,7 @@
 # ToolQ
 
+[![SEO canonical check](https://github.com/pareshsutharr/ToolQ/actions/workflows/seo-check.yml/badge.svg)](https://github.com/pareshsutharr/ToolQ/actions/workflows/seo-check.yml)
+
 ## SEO canonical checks
 
 Run this after each production deploy:
@@ -11,7 +13,7 @@ npm run seo:check
 The check verifies that:
 
 - `http://toolq.online/*`, `https://toolq.online/*`, and `http://www.toolq.online/*`
-  redirect directly with `301` to `https://www.toolq.online/*`.
+  redirect permanently (`301`/`308`) to `https://www.toolq.online/*`.
 - The homepage canonical tag, Open Graph URL, and JSON-LD use `https://www.toolq.online`.
 - `robots.txt` points to `https://www.toolq.online/sitemap.xml` and does not block `/`.
 - Every sitemap URL uses `https://www.toolq.online`.
