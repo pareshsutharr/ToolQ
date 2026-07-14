@@ -21,10 +21,10 @@
     --color-signal-violet: 103 232 249;
     --color-spark-lime: 52 211 153;
     --color-ink: 231 229 228;
-    --color-surface: 12 12 14;
+    --color-surface: 0 0 0;
     --color-flag-red: 248 113 113;
     --color-amber: 251 191 36;
-    --color-panel: 24 24 27;
+    --color-panel: 10 10 10;
   }
 
   html,

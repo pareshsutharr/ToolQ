@@ -41,7 +41,7 @@ export default function AdminToolsTable() {
           <button
             onClick={() => setCategory("all")}
             className={`rounded-full px-3 py-1 text-xs font-medium ${
-              category === "all" ? "bg-deep-ink text-white" : "bg-surface text-ink/60"
+              category === "all" ? "bg-deep-ink text-surface" : "bg-surface text-ink/60"
             }`}
           >
             All ({tools.length})
@@ -53,7 +53,7 @@ export default function AdminToolsTable() {
                 key={c.id}
                 onClick={() => setCategory(c.id)}
                 className={`rounded-full px-3 py-1 text-xs font-medium ${
-                  category === c.id ? "bg-deep-ink text-white" : "bg-surface text-ink/60"
+                  category === c.id ? "bg-deep-ink text-surface" : "bg-surface text-ink/60"
                 }`}
               >
                 {c.label} ({count})
