@@ -11,6 +11,17 @@ const display = Outfit({ subsets: ["latin"], variable: "--font-display" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
+const themeScript = `
+  (function () {
+    try {
+      var saved = localStorage.getItem("toolq-theme");
+      var dark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", dark);
+      document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    } catch (_) {}
+  })();
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -76,11 +87,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className={`${display.variable} ${body.variable} ${mono.variable} antialiased`}>
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen min-w-0 flex-col overflow-x-hidden">
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="min-w-0 flex-1 overflow-x-clip">{children}</main>
           <Footer />
         </div>
       </body>

@@ -3,14 +3,119 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-node-blue: 79 70 229;
+    --color-deep-ink: 28 25 23;
+    --color-signal-violet: 34 211 238;
+    --color-spark-lime: 16 185 129;
+    --color-ink: 28 25 23;
+    --color-surface: 245 244 241;
+    --color-flag-red: 220 38 38;
+    --color-amber: 217 119 6;
+    --color-panel: 255 255 255;
+  }
+
+  .dark {
+    --color-node-blue: 129 140 248;
+    --color-deep-ink: 250 250 249;
+    --color-signal-violet: 103 232 249;
+    --color-spark-lime: 52 211 153;
+    --color-ink: 231 229 228;
+    --color-surface: 12 12 14;
+    --color-flag-red: 248 113 113;
+    --color-amber: 251 191 36;
+    --color-panel: 24 24 27;
+  }
+
+  html,
   body {
-    @apply bg-surface text-ink font-body;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-surface text-ink font-body transition-colors duration-200;
   }
   h1,
   h2,
   h3,
   h4 {
     @apply font-display;
+  }
+}
+
+@layer utilities {
+  .dark .bg-white {
+    background-color: rgb(var(--color-panel));
+  }
+
+  .dark .bg-white\/95 {
+    background-color: rgb(var(--color-panel) / 0.95);
+  }
+
+  .dark .bg-white\/90 {
+    background-color: rgb(var(--color-panel) / 0.9);
+  }
+
+  .dark .bg-white\/85 {
+    background-color: rgb(var(--color-panel) / 0.85);
+  }
+
+  .dark .bg-white\/80 {
+    background-color: rgb(var(--color-panel) / 0.8);
+  }
+
+  .dark .bg-white\/70 {
+    background-color: rgb(var(--color-panel) / 0.7);
+  }
+
+  .dark .hover\:bg-white:hover,
+  .dark .focus\:bg-white:focus,
+  .dark .focus-within\:bg-white:focus-within {
+    background-color: rgb(var(--color-panel));
+  }
+
+  .dark .from-white {
+    --tw-gradient-from: rgb(var(--color-panel)) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(var(--color-panel) / 0) var(--tw-gradient-to-position);
+  }
+
+  .dark .via-white {
+    --tw-gradient-to: rgb(var(--color-panel) / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), rgb(var(--color-panel)) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  }
+
+  .dark .to-white {
+    --tw-gradient-to: rgb(var(--color-panel)) var(--tw-gradient-to-position);
+  }
+
+  .toolq-clean-orbit {
+    animation: toolq-clean-spin var(--orbit-duration) linear infinite;
+    animation-direction: var(--orbit-direction);
+  }
+
+  .toolq-clean-icon {
+    transform: translate(-50%, -50%);
+    animation: toolq-clean-counter-spin var(--orbit-duration) linear infinite;
+    animation-direction: var(--orbit-direction);
+  }
+
+  @keyframes toolq-clean-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes toolq-clean-counter-spin {
+    to {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toolq-clean-orbit,
+    .toolq-clean-icon {
+      animation-play-state: paused;
+    }
   }
 }
 

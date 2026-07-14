@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(curl -s http://localhost:3000/tools/image/to-text)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(git -C /Users/pareshsuthar/Desktop/ToolQ status --short)",
+      "Bash(git -C /Users/pareshsuthar/Desktop/ToolQ diff --stat)",
+      "Bash(git -C /Users/pareshsuthar/Desktop/ToolQ log --oneline -5)",
+      "Bash(git -C /Users/pareshsuthar/Desktop/ToolQ log --oneline -3 -- scripts/verify-seo.mjs)",
+      "Bash(git -C /Users/pareshsuthar/Desktop/ToolQ status -sb)",
+      "Bash(git -C /Users/pareshsuthar/Desktop/ToolQ ls-remote origin master)",
+      "Bash(gh run *)",
+      "Bash(echo \"---EXIT $?---\")",
+      "Bash(npx eslint *)",
+      "Bash(pkill -f \"PORT=3123\")",
+      "Bash(lsof -ti:3123)",
+      "Bash(xargs -r kill)",
+      "Bash(node -e \"console.log\\('anthropic-sdk version:', require\\('@anthropic-ai/sdk/package.json'\\).version\\)\")"
     ]
   }
 }

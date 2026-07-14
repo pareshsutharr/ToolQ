@@ -173,6 +173,16 @@ export const tools: ToolMeta[] = [
     keywords: ["turn pdf pages", "fix upside down page", "sideways pdf", "flip page orientation"],
   },
   {
+    slug: "edit",
+    category: "pdf",
+    group: "edit",
+    name: "Edit PDF",
+    description: "Open a PDF as an editable document — change text, then export back.",
+    premium: "partial",
+    seoKeyword: "edit pdf online free",
+    keywords: ["edit pdf text", "pdf editor", "change text in pdf", "modify pdf", "document editor"],
+  },
+  {
     slug: "page-numbers",
     category: "pdf",
     group: "edit",

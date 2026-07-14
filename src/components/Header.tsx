@@ -7,6 +7,7 @@ import { isSupabaseConfigured } from "@/lib/supabase/is-configured";
 import ToolqMark from "@/components/ToolqMark";
 import MegaMenu from "@/components/MegaMenu";
 import SearchBar from "@/components/SearchBar";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const [email, setEmail] = useState<string | null>(null);
@@ -28,8 +29,8 @@ export default function Header() {
   }
 
   return (
-    <header className="border-b border-ink/10 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-4">
+    <header className="w-full overflow-x-clip border-b border-ink/10 bg-white/90 backdrop-blur">
+      <div className="mx-auto flex min-w-0 max-w-6xl items-center gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <ToolqMark className="h-8 w-8 rounded-lg" />
           <span className="font-display text-lg font-semibold text-deep-ink">
@@ -46,8 +47,9 @@ export default function Header() {
         <div className="flex-1" />
 
         <SearchBar />
+        <ThemeToggle />
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           {!isSupabaseConfigured() ? null : email ? (
             <>
               <Link href="/admin" className="hidden text-sm text-ink/60 hover:text-node-blue sm:inline">
@@ -62,11 +64,12 @@ export default function Header() {
             </>
           ) : (
             <>
-              <Link href="/sign-in" className="btn-secondary">
+              <Link href="/sign-in" className="btn-secondary hidden sm:inline-flex">
                 Sign in
               </Link>
-              <Link href="/sign-up" className="btn-primary">
-                Sign up free
+              <Link href="/sign-up" className="btn-primary px-3 sm:px-5">
+                <span className="sm:hidden">Sign up</span>
+                <span className="hidden sm:inline">Sign up free</span>
               </Link>
             </>
           )}
