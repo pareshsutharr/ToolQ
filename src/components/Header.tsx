@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/is-configured";
 import ToolqMark from "@/components/ToolqMark";
 import MegaMenu from "@/components/MegaMenu";
-import SearchBar from "@/components/SearchBar";
+// import SearchBar from "@/components/SearchBar"; // header search disabled — hero search covers it
 import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
@@ -29,7 +29,7 @@ export default function Header() {
   }
 
   return (
-    <header className="w-full overflow-x-clip border-b border-ink/10 bg-white/90 backdrop-blur">
+    <header className="relative z-40 w-full border-b border-ink/10 bg-white/90 backdrop-blur">
       <div className="mx-auto flex min-w-0 max-w-6xl items-center gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <ToolqMark className="h-8 w-8 rounded-lg" />
@@ -40,13 +40,17 @@ export default function Header() {
 
         <MegaMenu />
 
+        <Link href="/design" className="hidden text-sm font-medium text-ink/70 hover:text-node-blue md:inline">
+          Design
+        </Link>
+
         <Link href="/blog" className="hidden text-sm font-medium text-ink/70 hover:text-node-blue md:inline">
           Blog
         </Link>
 
         <div className="flex-1" />
 
-        <SearchBar />
+        {/* <SearchBar /> */}
         <ThemeToggle />
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">

@@ -1,5 +1,6 @@
 import type { ComponentType, CSSProperties } from "react";
 import Link from "next/link";
+import SearchBar from "@/components/SearchBar";
 import {
   Braces,
   Calculator,
@@ -65,7 +66,9 @@ export default function FeatureSection() {
             focused tools that work right in your browser.
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
+          <SearchBar className="mt-6 block w-full max-w-md" size="lg" />
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link href="/tools/pdf" className="btn-primary rounded-md px-4 py-2 text-xs">
               Get started
             </Link>

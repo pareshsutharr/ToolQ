@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Palette, ArrowRight } from "lucide-react";
 import { categories, toolsByCategory } from "@/lib/tools-catalog";
 import ToolCard from "@/components/ToolCard";
 import FeatureSection from "@/components/ui/stack-feature-section";
@@ -13,6 +15,29 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <FeatureSection />
+
+      <section className="mx-auto max-w-6xl px-6 pt-14">
+        <Link
+          href="/design"
+          className="card group flex flex-wrap items-center gap-4 p-6 transition hover:border-node-blue/40"
+        >
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-ai-gradient text-white">
+            <Palette className="h-6 w-6" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-display text-lg font-semibold text-deep-ink group-hover:text-node-blue">
+              ToolQ Design Space
+            </span>
+            <span className="block text-sm text-ink/60">
+              Create social posts, thumbnails, posters and cards with a free drag-and-drop editor — right in your
+              browser, saved on your device.
+            </span>
+          </span>
+          <span className="btn-secondary shrink-0 gap-1.5 group-hover:border-node-blue/40 group-hover:text-node-blue">
+            Open editor <ArrowRight className="h-4 w-4" />
+          </span>
+        </Link>
+      </section>
 
       {categories.map((category) => (
         <section

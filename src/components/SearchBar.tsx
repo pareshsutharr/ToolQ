@@ -7,7 +7,26 @@ import { Search } from "lucide-react";
 import { tools, type ToolMeta } from "@/lib/tools-catalog";
 import { getToolIcon, groupColors } from "@/lib/tool-icons";
 
-export default function SearchBar() {
+const SIZES = {
+  sm: {
+    icon: "left-3 h-4 w-4",
+    input: "rounded-lg py-2 pl-9 pr-3 text-sm",
+    panel: "w-80",
+  },
+  lg: {
+    icon: "left-4 h-5 w-5",
+    input: "rounded-xl py-3 pl-12 pr-4 text-base shadow-sm",
+    panel: "w-full",
+  },
+};
+
+export default function SearchBar({
+  className = "hidden w-64 lg:block",
+  size = "sm",
+}: {
+  className?: string;
+  size?: keyof typeof SIZES;
+}) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -70,9 +89,11 @@ export default function SearchBar() {
     }
   }
 
+  const s = SIZES[size];
+
   return (
-    <div ref={containerRef} className="relative hidden w-64 lg:block">
-      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/40" />
+    <div ref={containerRef} className={`relative ${className}`}>
+      <Search className={`pointer-events-none absolute top-1/2 -translate-y-1/2 text-ink/40 ${s.icon}`} />
       <input
         value={query}
         onChange={(e) => {
@@ -82,10 +103,10 @@ export default function SearchBar() {
         onFocus={() => setOpen(true)}
         onKeyDown={onKeyDown}
         placeholder="Search tools… e.g. &quot;shrink my pdf&quot;"
-        className="w-full rounded-lg border border-ink/15 bg-surface py-2 pl-9 pr-3 text-sm outline-none focus:border-node-blue focus:bg-white"
+        className={`w-full border border-ink/15 bg-surface outline-none focus:border-node-blue focus:bg-white ${s.input}`}
       />
       {open && query.trim() && (
-        <div className="absolute left-0 top-full z-20 mt-2 w-80 rounded-xl border border-ink/10 bg-white p-2 shadow-lg">
+        <div className={`absolute left-0 top-full z-20 mt-2 rounded-xl border border-ink/10 bg-white p-2 shadow-lg ${s.panel}`}>
           {results.length === 0 ? (
             <p className="px-3 py-4 text-sm text-ink/50">No tools found for &quot;{query}&quot;.</p>
           ) : (
