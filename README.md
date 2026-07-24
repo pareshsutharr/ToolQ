@@ -2,6 +2,8 @@
 
 [![SEO canonical check](https://github.com/pareshsutharr/ToolQ/actions/workflows/seo-check.yml/badge.svg)](https://github.com/pareshsutharr/ToolQ/actions/workflows/seo-check.yml)
 
+For a full breakdown of every feature, tool, and architectural decision in this project, see [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md).
+
 ## SEO canonical checks
 
 Run this after each production deploy:

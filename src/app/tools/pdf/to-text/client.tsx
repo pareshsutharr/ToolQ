@@ -6,6 +6,7 @@ import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs } from "@/lib/pdfjs";
 import { extractPdfText } from "@/lib/pdf-text";
+import { Loader2 } from "lucide-react";
 
 export default function PdfToTextPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -85,7 +86,8 @@ export default function PdfToTextPage() {
         <div className="flex flex-col gap-4">
           <p className="text-sm text-ink/60">{file.name}</p>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={convert} disabled={busy} className="btn-primary">
+          <button onClick={convert} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Extracting…" : "Extract Text"}
           </button>
         </div>

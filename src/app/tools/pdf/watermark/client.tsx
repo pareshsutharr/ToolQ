@@ -5,6 +5,7 @@ import { PDFDocument, StandardFonts, rgb, degrees } from "pdf-lib";
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
+import { Loader2 } from "lucide-react";
 
 export default function WatermarkPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -91,7 +92,8 @@ export default function WatermarkPage() {
             />
           </div>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={apply} disabled={busy || !text.trim()} className="btn-primary">
+          <button onClick={apply} disabled={busy || !text.trim()} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Adding…" : "Add Watermark"}
           </button>
         </div>

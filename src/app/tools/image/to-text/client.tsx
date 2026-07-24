@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
+import { Loader2 } from "lucide-react";
 
 export default function ImageToTextPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -100,7 +101,8 @@ export default function ImageToTextPage() {
           </p>
           {progress && <p className="text-sm text-node-blue">{progress}</p>}
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={run} disabled={busy} className="btn-primary">
+          <button onClick={run} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Reading text…" : "Extract Text"}
           </button>
         </div>

@@ -7,6 +7,7 @@ import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs, renderPageToCanvas } from "@/lib/pdfjs";
 import { canvasToBlob } from "@/lib/image";
+import { Loader2 } from "lucide-react";
 
 export default function UnlockPdfPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -103,7 +104,8 @@ export default function UnlockPdfPage() {
           </div>
           {progress && <p className="text-sm text-node-blue">{progress}</p>}
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={unlock} disabled={busy} className="btn-primary">
+          <button onClick={unlock} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Unlocking…" : "Unlock PDF"}
           </button>
         </div>

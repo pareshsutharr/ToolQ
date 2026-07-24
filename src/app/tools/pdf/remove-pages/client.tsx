@@ -5,6 +5,7 @@ import { PDFDocument } from "pdf-lib";
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
+import { Loader2 } from "lucide-react";
 
 function parseRanges(input: string, pageCount: number): Set<number> {
   const indices = new Set<number>();
@@ -100,7 +101,8 @@ export default function RemovePagesPage() {
             />
           </div>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={removePages} disabled={busy} className="btn-primary">
+          <button onClick={removePages} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Removing…" : "Remove Pages"}
           </button>
         </div>

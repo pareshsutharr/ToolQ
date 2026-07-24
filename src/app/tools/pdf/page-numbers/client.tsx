@@ -5,6 +5,7 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
+import { Loader2 } from "lucide-react";
 
 const POSITIONS = [
   { label: "Bottom center", key: "bottom-center" },
@@ -100,7 +101,8 @@ export default function PageNumbersPage() {
             />
           </div>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={apply} disabled={busy} className="btn-primary">
+          <button onClick={apply} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Adding…" : "Add Page Numbers"}
           </button>
         </div>

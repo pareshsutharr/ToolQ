@@ -6,6 +6,7 @@ import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs } from "@/lib/pdfjs";
 import { extractPdfRows } from "@/lib/pdf-text";
+import { Loader2 } from "lucide-react";
 
 export default function PdfToExcelPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -87,7 +88,8 @@ export default function PdfToExcelPage() {
             still land on one Excel row; very free-form layouts may not line up perfectly.
           </p>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={convert} disabled={busy} className="btn-primary">
+          <button onClick={convert} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Converting…" : "Convert to Excel"}
           </button>
         </div>

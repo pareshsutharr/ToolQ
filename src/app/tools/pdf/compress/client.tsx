@@ -7,6 +7,7 @@ import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { canvasToBlob } from "@/lib/image";
 import { loadPdfjs } from "@/lib/pdfjs";
+import { Loader2 } from "lucide-react";
 
 const LEVELS = {
   light: {
@@ -146,7 +147,8 @@ export default function CompressPdfPage() {
             <p className="text-xs text-ink/40">{LEVELS[level].hint}</p>
           </div>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={compress} disabled={busy} className="btn-primary">
+          <button onClick={compress} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Compressing…" : "Compress PDF"}
           </button>
         </div>

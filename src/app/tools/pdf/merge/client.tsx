@@ -5,6 +5,7 @@ import { PDFDocument } from "pdf-lib";
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
+import { Loader2 } from "lucide-react";
 
 interface FileEntry {
   file: File;
@@ -151,7 +152,8 @@ export default function MergePdfPage() {
             </p>
           )}
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={merge} disabled={busy || validCount < 2} className="btn-primary">
+          <button onClick={merge} disabled={busy || validCount < 2} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Merging…" : `Merge ${validCount || ""} PDFs`}
           </button>
         </div>

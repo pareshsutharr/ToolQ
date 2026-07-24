@@ -5,6 +5,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadImage, canvasToBlob } from "@/lib/image";
+import { Loader2 } from "lucide-react";
 
 const FORMATS = [
   { label: "JPG", mime: "image/jpeg", ext: "jpg" },
@@ -110,7 +111,8 @@ export default function ConvertImagePage() {
           )}
           {error && <p className="w-full text-sm text-flag-red">{error}</p>}
           {canConvert && (
-            <button onClick={convert} disabled={busy} className="btn-primary w-full">
+            <button onClick={convert} disabled={busy} className="btn-primary w-full gap-2">
+              {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               {busy ? "Converting…" : `Convert to ${format.label}`}
             </button>
           )}

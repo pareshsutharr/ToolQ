@@ -1175,16 +1175,18 @@ export default function EditPdfPage() {
             <button
               onClick={runAiRebuild}
               disabled={aiBusy || ocrBusy}
-              className="btn-primary px-3 py-1.5 text-xs"
+              className="btn-primary gap-1.5 px-3 py-1.5 text-xs"
             >
+              {aiBusy && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
               {aiBusy ? "Rebuilding…" : "Rebuild with AI"}
             </button>
             {sourceFileRef.current && (
               <button
                 onClick={() => runOcr(false)}
                 disabled={ocrBusy || aiBusy}
-                className="btn-secondary px-3 py-1.5 text-xs"
+                className="btn-secondary gap-1.5 px-3 py-1.5 text-xs"
               >
+                {ocrBusy && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
                 {ocrBusy ? "Extracting…" : "Retry OCR"}
               </button>
             )}

@@ -76,6 +76,18 @@ export function createEmptyParagraph(): Block {
   return createParagraphBlock({ text: "" });
 }
 
+export function createListBlock(items: string[], ordered = false): Block {
+  return {
+    sectionId: createId(),
+    type: "list",
+    position: { x: 0, y: 0 },
+    dimensions: { width: 0, height: 0 },
+    styles: { fontSize: 11, alignment: "left" },
+    content: { kind: "list", ordered, items },
+    metadata: { source: "digital", createdAt: nowIso() },
+  };
+}
+
 export function createTableBlock(rows: string[][]): Block {
   return {
     sectionId: createId(),

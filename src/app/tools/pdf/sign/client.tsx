@@ -6,6 +6,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs, renderPageToCanvas } from "@/lib/pdfjs";
+import { Loader2 } from "lucide-react";
 
 export default function SignPdfPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -197,7 +198,8 @@ export default function SignPdfPage() {
           )}
 
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={apply} disabled={busy || !signatureDataUrl} className="btn-primary">
+          <button onClick={apply} disabled={busy || !signatureDataUrl} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Signing…" : "Sign PDF"}
           </button>
         </div>

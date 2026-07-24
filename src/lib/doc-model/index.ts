@@ -6,6 +6,7 @@ export * from "./factory";
 export * from "./validate";
 export * from "./metadata";
 export * from "./import-pdf";
+export * from "./import-docx";
 export * from "./export";
 export * from "./persist";
 export * from "./versions";

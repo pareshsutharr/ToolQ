@@ -7,6 +7,7 @@ import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs, renderPageToCanvas } from "@/lib/pdfjs";
 import { canvasToBlob } from "@/lib/image";
+import { Loader2 } from "lucide-react";
 
 const RENDER_SCALE = 2.5;
 
@@ -107,7 +108,8 @@ export default function OcrPdfPage() {
           </p>
           {progress && <p className="text-sm text-node-blue">{progress}</p>}
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={run} disabled={busy} className="btn-primary">
+          <button onClick={run} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Running OCR…" : "Run OCR"}
           </button>
         </div>

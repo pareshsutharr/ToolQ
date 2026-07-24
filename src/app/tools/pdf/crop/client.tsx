@@ -6,6 +6,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs, renderPageToCanvas } from "@/lib/pdfjs";
+import { Loader2 } from "lucide-react";
 
 export default function CropPdfPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -119,7 +120,8 @@ export default function CropPdfPage() {
             ))}
           </div>
           {error && <p className="w-full text-sm text-flag-red">{error}</p>}
-          <button onClick={crop} disabled={busy} className="btn-primary w-full">
+          <button onClick={crop} disabled={busy} className="btn-primary w-full gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Cropping…" : "Crop PDF"}
           </button>
         </div>

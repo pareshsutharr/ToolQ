@@ -6,6 +6,7 @@
 
 import { useState } from "react";
 import { diffLines } from "diff";
+import { Loader2 } from "lucide-react";
 import type { VersionSummary } from "@/lib/doc-model";
 
 function formatTime(iso: string): string {
@@ -66,8 +67,9 @@ export function VersionsPanel({
           aria-label="Version label"
           className="flex-1 rounded border border-ink/10 px-2 py-1 text-sm focus:border-node-blue focus:outline-none"
         />
-        <button onClick={save} disabled={busy} className="btn-primary px-3 py-1.5 text-xs">
-          Save version
+        <button onClick={save} disabled={busy} className="btn-primary gap-1.5 px-3 py-1.5 text-xs">
+          {busy && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
+          {busy ? "Saving…" : "Save version"}
         </button>
       </div>
 

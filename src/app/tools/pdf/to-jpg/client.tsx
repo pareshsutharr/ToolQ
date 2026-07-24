@@ -5,6 +5,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs } from "@/lib/pdfjs";
+import { Loader2 } from "lucide-react";
 
 const SCALES = [
   { label: "Standard", scale: 1.5 },
@@ -106,7 +107,8 @@ export default function PdfToJpgPage() {
           </div>
           {progress && <p className="text-sm text-node-blue">{progress}</p>}
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={convert} disabled={busy} className="btn-primary">
+          <button onClick={convert} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Converting…" : "Convert to JPG"}
           </button>
         </div>

@@ -5,6 +5,7 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
+import { Loader2 } from "lucide-react";
 
 const PAGE_WIDTH = 792; // US Letter landscape, in points
 const PAGE_HEIGHT = 612;
@@ -130,7 +131,8 @@ export default function ExcelToPdfPage() {
         <div className="flex flex-col gap-4">
           <p className="text-sm text-ink/60">{file.name}</p>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={convert} disabled={busy} className="btn-primary">
+          <button onClick={convert} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Converting…" : "Convert to PDF"}
           </button>
         </div>

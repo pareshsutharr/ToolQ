@@ -5,6 +5,7 @@ import { PDFDocument } from "pdf-lib";
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
+import { Loader2 } from "lucide-react";
 
 function parseGroup(group: string, pageCount: number): number[] | null {
   const match = group.trim().match(/^(\d+)(?:-(\d+))?$/);
@@ -119,10 +120,12 @@ export default function SplitPdfPage() {
           </div>
           {error && <p className="text-sm text-flag-red">{error}</p>}
           <div className="flex flex-wrap gap-3">
-            <button onClick={splitByRanges} disabled={busy || !ranges.trim()} className="btn-primary">
+            <button onClick={splitByRanges} disabled={busy || !ranges.trim()} className="btn-primary gap-2">
+              {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               {busy ? "Splitting…" : "Split by Ranges"}
             </button>
-            <button onClick={splitEveryPage} disabled={busy} className="btn-secondary">
+            <button onClick={splitEveryPage} disabled={busy} className="btn-secondary gap-2">
+              {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               {busy ? "Splitting…" : `Split Every Page (${pageCount} files)`}
             </button>
           </div>

@@ -5,6 +5,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import { loadPdfjs } from "@/lib/pdfjs";
 import { extractPdfText } from "@/lib/pdf-text";
+import { Loader2 } from "lucide-react";
 
 interface DiffPart {
   value: string;
@@ -100,7 +101,8 @@ export default function ComparePdfPage() {
             </div>
           </div>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={compare} disabled={busy || !fileA || !fileB} className="btn-primary">
+          <button onClick={compare} disabled={busy || !fileA || !fileB} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Comparing…" : "Compare PDFs"}
           </button>
         </div>

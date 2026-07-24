@@ -7,6 +7,7 @@ import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs } from "@/lib/pdfjs";
 import { extractPdfText } from "@/lib/pdf-text";
 import { loadTransformersPipeline } from "@/lib/transformers";
+import { Loader2 } from "lucide-react";
 
 const DIRECTIONS = [
   { label: "English → Spanish", model: "Xenova/opus-mt-en-es" },
@@ -154,7 +155,8 @@ export default function TranslatePdfPage() {
           </p>
           {progress && <p className="text-sm text-node-blue">{progress}</p>}
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={run} disabled={busy} className="btn-primary">
+          <button onClick={run} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Working…" : "Translate"}
           </button>
         </div>

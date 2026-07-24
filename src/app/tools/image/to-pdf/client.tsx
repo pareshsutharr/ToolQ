@@ -6,6 +6,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadImage, canvasToBlob } from "@/lib/image";
+import { Loader2 } from "lucide-react";
 
 // Treat source pixels as 96 DPI (standard screen density) and convert to PDF
 // points (72/inch) so pages come out at a sane real-world size — using raw
@@ -142,7 +143,8 @@ export default function ImageToPdfPage() {
             </ul>
           )}
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={convert} disabled={busy || files.length === 0} className="btn-primary">
+          <button onClick={convert} disabled={busy || files.length === 0} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Converting…" : `Convert ${files.length || ""} Images to PDF`}
           </button>
         </div>

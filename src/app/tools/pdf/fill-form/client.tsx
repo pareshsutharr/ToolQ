@@ -5,6 +5,7 @@ import { PDFDocument, PDFTextField, PDFCheckBox, PDFRadioGroup, PDFDropdown } fr
 import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
+import { Loader2 } from "lucide-react";
 
 type FieldDescriptor =
   | { kind: "text"; name: string }
@@ -147,7 +148,8 @@ export default function FillFormPage() {
             Flatten form (values become permanent, no longer editable)
           </label>
           {error && <p className="text-sm text-flag-red">{error}</p>}
-          <button onClick={submit} disabled={busy} className="btn-primary">
+          <button onClick={submit} disabled={busy} className="btn-primary gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Filling…" : "Fill Form"}
           </button>
         </div>

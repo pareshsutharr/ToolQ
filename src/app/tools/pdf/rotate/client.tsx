@@ -6,6 +6,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadPdfjs } from "@/lib/pdfjs";
+import { Loader2 } from "lucide-react";
 
 const ANGLES = [90, 180, 270] as const;
 
@@ -100,7 +101,8 @@ export default function RotatePdfPage() {
             ))}
           </div>
           {error && <p className="w-full text-sm text-flag-red">{error}</p>}
-          <button onClick={rotate} disabled={busy} className="btn-primary w-full">
+          <button onClick={rotate} disabled={busy} className="btn-primary w-full gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Rotating…" : "Rotate PDF"}
           </button>
         </div>

@@ -5,6 +5,7 @@ import ToolShell from "@/components/ToolShell";
 import Dropzone from "@/components/Dropzone";
 import ResultList, { type ResultFile } from "@/components/ResultList";
 import { loadImage, canvasToBlob } from "@/lib/image";
+import { Loader2 } from "lucide-react";
 
 const PRESETS = [25, 50, 75, 100] as const;
 
@@ -159,7 +160,8 @@ export default function ResizeImagePage() {
             </p>
           )}
           {error && <p className="w-full text-sm text-flag-red">{error}</p>}
-          <button onClick={resize} disabled={busy} className="btn-primary w-full">
+          <button onClick={resize} disabled={busy} className="btn-primary w-full gap-2">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
             {busy ? "Resizing…" : "Resize Image"}
           </button>
         </div>
